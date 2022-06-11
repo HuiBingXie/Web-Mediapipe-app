@@ -19,16 +19,18 @@ html, body {
 .aboutUsContent {
     display:flex;
     flex-direction: row;
+    padding-top:30px;
 }
 
 .containerContent{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 30px;
 
 }
 .containerSection{
-
+    padding-top: 40px;
 }
 .containerBox{
     position relative;

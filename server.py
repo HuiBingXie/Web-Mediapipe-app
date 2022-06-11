@@ -37,6 +37,10 @@ def pictures():
 def about_us():
     return render_template("aboutus.html")
 
+@app.route('/charity')
+def charity():
+    return render_template("charity.html")
+
 @app.route('/searchPage', methods=['GET'])
 def searchPage():
     return render_template("index.html")
