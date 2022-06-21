@@ -32,7 +32,6 @@ def mediapipe():
         json_object = json.dumps(posedata, indent=2) #this block adds a dictionary for each pic to our json file
         with open("data.json", "w") as outfile:
             outfile.write(json_object)
-
 def mediapipelabel():
     global imagepath, pictureList
     for picture in pictureList:
@@ -163,3 +162,5 @@ class Joint:
     def __init__(self,x,y):
         self.x = x
         self.y = y
+
+#mediapipe()#update json file

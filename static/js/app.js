@@ -1,3 +1,5 @@
+HEIGHT = 50;
+WIDTH= 300;
 currIndex = 0;
 var image = document.getElementById('image');
 image.src = 'static/pictures/picture-114.jpeg';
@@ -9,18 +11,18 @@ divs = document.getElementsByTagName("joint");
 
 for (div of divs) div.onmousedown = onMouseDown;
 
-joints = {"left_shoulder":{"x":700,"y":100},
-"right_shoulder":{"x":850,"y":100},
-"left_waist":{"x":725,"y":250},
-"right_waist":{"x":825,"y":250},
-"left_elbow":{"x":670,"y":200},
-"right_elbow":{"x":880,"y":200},
-"left_wrist":{"x":670,"y":300},
-"right_wrist":{"x":880,"y":300},
-"left_knee":{"x":725,"y":350},
-"right_knee":{"x":825,"y":350},
-"left_ankle":{"x":725,"y":500},
-"right_ankle":{"x":825,"y":500}};
+joints = {"right_shoulder":{"x":700,"y":100},
+"left_shoulder":{"x":850,"y":100},
+"right_waist":{"x":725,"y":250},
+"left_waist":{"x":825,"y":250},
+"right_elbow":{"x":670,"y":200},
+"left_elbow":{"x":880,"y":200},
+"right_wrist":{"x":670,"y":300},
+"left_wrist":{"x":880,"y":300},
+"right_knee":{"x":725,"y":350},
+"left_knee":{"x":825,"y":350},
+"right_ankle":{"x":725,"y":500},
+"left_ankle":{"x":825,"y":500}};
 
 right_shoulder = document.getElementById("right_shoulder");
 left_shoulder = document.getElementById("left_shoulder");
@@ -56,10 +58,8 @@ function initJoints(){
 }
 
 function setJoint(joint, x, y){
-    height = 50;
-    width = 300;
-    joint.style.left = width + x + "px";
-    joint.style.top  = height + y + "px";
+    joint.style.left = WIDTH + x + "px";
+    joint.style.top  = HEIGHT + y + "px";
 }
 
 function onMouseDown(e) {
@@ -79,8 +79,12 @@ function onMouseMove(e) {
     d.style.top  = d.offsetTop  + e.clientY - the_last_mouse_position.y + "px";
     the_last_mouse_position.x = e.clientX;                                          // remember where the mouse is now
     the_last_mouse_position.y = e.clientY;
-    joints[the_moving_div].x = d.offsetLeft + e.clientX - the_last_mouse_position.x
-    joints[the_moving_div].y = d.offsetTop + e.clientY - the_last_mouse_position.y
+
+    //Update code. I have a mistake in this part when I set the coordinates of the joint(eg, right_wrist, left_wrist, right_shoulder...)
+    joints[the_moving_div].x = d.offsetLeft + e.clientX - the_last_mouse_position.x - WIDTH
+    joints[the_moving_div].y = d.offsetTop + e.clientY - the_last_mouse_position.y - HEIGHT
+    d = document.getElementById(the_moving_div);
+    setJoint(d, joints[the_moving_div].x , joints[the_moving_div].y)
     drawJoints();
     console.log(joints[the_moving_div])
 }
