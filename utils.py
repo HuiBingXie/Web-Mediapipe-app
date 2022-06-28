@@ -116,7 +116,7 @@ def angle(joint1,joint2):
         return angle
     except ZeroDivisionError:
         return 1.5708 #pi/2 radians
-# mediapipe()
+#mediapipe()#add to json
 # def save(): #Maybe use absolute value?
 #     global unnamed_pose_count,imagepath
 #     # PoseDictionary = {"picture": imagepath, "left_shoulder": (left_shoulder.x, left_shoulder.y),
